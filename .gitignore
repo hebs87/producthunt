@@ -9,3 +9,4 @@ media/
 htmlcov/
 .coverage
 .coveragerc
+myenv/
