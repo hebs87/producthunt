@@ -13,7 +13,7 @@
 
     <h1>Create</h1>
 
-    <form method="POST" action="{% url 'login' %}">
+    <form method="POST" action="{% url 'create' %}">
         {% csrf_token %}
         {{ product_form | as_bootstrap }}
         <button type="submit" class="btn btn-primary">Create</button>
