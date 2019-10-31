@@ -18,7 +18,7 @@ def home(request):
     return render(request, 'index.html', context)
 
 
-@login_required
+@login_required(login_url="/accounts/register")
 def create(request):
     '''
     Allows user to add a product
@@ -59,7 +59,7 @@ def detail(request, product_id):
     return render(request, 'detail.html', context)
 
 
-@login_required
+@login_required(login_url="/accounts/register")
 def upvote(request, product_id):
     '''
     Allows user to upvote a product

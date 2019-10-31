@@ -77,7 +77,7 @@ def login(request):
     return render(request, 'login.html', context)
 
 
-@login_required
+@login_required(login_url="/accounts/register")
 def logout(request):
     '''
     Logs user out and redirects to login page
