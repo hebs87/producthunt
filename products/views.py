@@ -40,7 +40,6 @@ def create(request):
     return render(request, 'create.html', context)
 
 
-@login_required
 def detail(request, product_id):
     '''
     Loads full details of the product
