@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import ProductForm
+from .models import Product
 
 
 # Create your views here.
@@ -44,4 +45,10 @@ def detail(request, product_id):
     '''
     Loads full details of the product
     '''
-    return render(request, 'detail.html')
+    product = get_object_or_404(Product, pk=product_id)
+
+    context = {
+        "product": product,
+    }
+
+    return render(request, 'detail.html', context)
