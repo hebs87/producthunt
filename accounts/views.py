@@ -16,3 +16,8 @@ def login(request):
     return(render, 'login.html')
 
 
+def logout(request):
+    '''
+    Logs user out and redirects to login page
+    '''
+    return(render, 'login.html')
