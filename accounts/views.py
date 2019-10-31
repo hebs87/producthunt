@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.urls import reverse
 from django.contrib import auth
 from .forms import UserLoginForm, UserRegistrationForm
 
@@ -8,6 +9,10 @@ def register(request):
     '''
     Renders register.html and allows user to register
     '''
+    # Redirect user to home page if already logged in
+    if request.user.is_authenticated:
+        return redirect(reverse('home'))
+
     if request.method == "POST":
         register_form = UserRegistrationForm(request.POST)
 
