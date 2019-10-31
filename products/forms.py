@@ -17,7 +17,7 @@ class ProductForm(forms.ModelForm):
         label="Product Link",
         min_length=10,
         max_length=2000,
-        widget=forms.Textarea(),
+        widget=forms.TextInput(),
         required=True)
     image = forms.ImageField(
         label="Image",

@@ -1,9 +1,22 @@
 {% extends 'base.html' %}
+{% load bootstrap_tags %}
 
 {% block title %}Create{% endblock %}
 
 {% block content %}
 
-    <h1>Create!</h1>
+    {% if error %}
+        {{ error }}
+        <br/>
+        <br/>
+    {% endif %}
+
+    <h1>Create</h1>
+
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ product_form | as_bootstrap }}
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
 
 {% endblock %}
