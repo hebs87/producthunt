@@ -47,7 +47,32 @@ def login(request):
     '''
     Renders login.html and allows user to register
     '''
-    return render(request, 'login.html')
+    # Redirect user to home page if already logged in
+    if request.user.is_authenticated:
+        return redirect(reverse('home'))
+
+    if request.method == "POST":
+        login_form = UserLoginForm(request.POST)
+        user = auth.authenticate(
+            username=request.POST['username'],
+            password=request.POST['password']
+        )
+
+        if user is not None:
+            auth.login(request, user)
+            return redirect('home')
+        else:
+            return render(request, 'login.html',
+                {"error": "Details don't match what we have!",
+                "login_form": login_form})
+    else:
+        login_form = UserLoginForm()
+
+    context = {
+        'login_form': login_form,
+    }
+
+    return render(request, 'login.html', context)
 
 
 def logout(request):
