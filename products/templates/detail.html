@@ -4,6 +4,44 @@
 
 {% block content %}
 
-    <h1>{{ product.title }}</h1>
+    <div class="row">
+        <div class="col-2">
+            <img src="{{ product.icon.url }}" alt="{{ product.title }}" class="img-fluid">
+        </div>
+        <div class="col-10">
+            <a href="{{ product.url }}" target="_blank">
+                <h1>{{ product.title }}</h1>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8">
+            <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid">
+        </div>
+        <div class="col-4">
+            <a href="">
+                <button class="btn btn-primary btn-lg btn-lock">
+                    <span class="oi oi-thumb-up"></span>
+                    Upvote {{ product.votes_total }}
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <h4>Hunted by {{ product.hunter.username }}</h4>
+        </div>
+        <div class="col-4 text-right">
+            <h4>{{ product.pub_date_beautify }}</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8">
+            <p>{{ product.body }}</p>
+        </div>
+    </div>
 
 {% endblock %}
