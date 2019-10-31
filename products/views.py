@@ -9,7 +9,13 @@ def home(request):
     '''
     Returns home page
     '''
-    return render(request, 'index.html')
+    products = Product.objects.all()
+
+    context = {
+        'products': products,
+    }
+
+    return render(request, 'index.html', context)
 
 
 @login_required
