@@ -20,7 +20,7 @@
             <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid">
         </div>
         <div class="col-4">
-            <a href="">
+            <a href="{% url 'upvote' product.id %}">
                 <button class="btn btn-primary btn-lg btn-lock">
                     <span class="oi oi-thumb-up"></span>
                     Upvote {{ product.votes_total }}

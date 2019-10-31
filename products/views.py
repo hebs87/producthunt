@@ -52,3 +52,15 @@ def detail(request, product_id):
     }
 
     return render(request, 'detail.html', context)
+
+
+@login_required
+def upvote(request, product_id):
+    '''
+    Allows user to upvote a product
+    '''
+    product = get_object_or_404(Product, pk=product_id)
+    product.votes_total += 1
+    product.save()
+
+    return redirect('detail', product.id)
