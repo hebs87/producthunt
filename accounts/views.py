@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 from .forms import UserLoginForm, UserRegistrationForm
+
 
 # Create your views here.
 def register(request):
@@ -75,8 +77,11 @@ def login(request):
     return render(request, 'login.html', context)
 
 
+@login_required
 def logout(request):
     '''
     Logs user out and redirects to login page
     '''
-    return render(request, 'login.html')
+    if request.method == "POST":
+        auth.logout(request)
+        return redirect('home')
