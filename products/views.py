@@ -28,8 +28,8 @@ def create(request):
             else:
                 # Add http:// if URL doesn't start with it
                 product_form.instance.url = "http://" + request.POST["url"]
-            product_form.save()
-            return redirect('home', {'product_form': product_form})
+            product = product_form.save()
+            return redirect('detail', product.id)
     else:
         product_form = ProductForm()
 
