@@ -44,5 +44,5 @@ class Product(models.Model):
         return self.pub_date.strftime('%e %b %Y')
 
     def __str__(self):
-        return "#{0} [{1} - {2}] - {3}".format(
+        return "#{0} - {1}".format(
             self.id, self.title)
