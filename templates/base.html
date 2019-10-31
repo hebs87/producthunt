@@ -31,7 +31,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ml-auto">
+                        <!-- If user is logged in -->
                         {% if user.is_authenticated %}
+                            <a class="nav-item nav-link" href="{% url 'create' %}">
+                                <span class="oi oi-plus" aria-hidden="true"></span>
+                            </a>
                             <!-- Link calls the form, which in turn calls logout view -->
                             <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
                             <!-- Hidden form to ensure that the request method is POST -->
@@ -39,6 +43,7 @@
                                 {% csrf_token %}
                                 <input type="hidden"/>
                             </form>
+                        <!-- If user is logged out -->
                         {% else %}
                             <a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a>
                             <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
