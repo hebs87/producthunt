@@ -2,6 +2,28 @@
 
 {% block content %}
 
-    <h1>Hello World!</h1>
+    {% for product in products %}
+        <div class="row pt-3 pb-3">
+            <div class="col-2">
+                <a href="{% url 'detail' product.id %}">
+                    <img src="{{ product.icon.url }}" alt="{{ product.title }}" class="img-fluid">
+                </a>
+            </div>
+            <div class="col-7">
+                <a href="{% url 'detail' product.id %}">
+                    <h4>{{ product.title }}</h4>
+                </a>
+                <p>{{ product.body }}</p>
+            </div>
+            <div class="col-3">
+                <a href="{% url 'upvote' product.id %}">
+                    <button class="btn btn-primary btn-lg btn-lock">
+                        <span class="oi oi-thumb-up"></span>
+                        Upvote {{ product.votes_total }}
+                    </button>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
 
 {% endblock %}
